@@ -28,36 +28,30 @@ QT_BEGIN_NAMESPACE
 
 QGtkPainter::QGtkPainter()
 {
-    reset(0);
+	reset(0);
 }
 
 QGtkPainter::~QGtkPainter()
-{
-}
+{}
 
 void QGtkPainter::reset(QPainter *painter)
 {
-    m_painter = painter;
-    m_alpha = true;
-    m_hflipped = false;
-    m_vflipped = false;
-    m_usePixmapCache = true;
-    m_cliprect = QRect();
+	m_painter		 = painter;
+	m_alpha			 = true;
+	m_hflipped		 = false;
+	m_vflipped		 = false;
+	m_usePixmapCache = true;
+	m_cliprect		 = QRect();
 }
 
-QString QGtkPainter::uniqueName(const QString &key, GtkStateType state, GtkShadowType shadow,
-                                const QSize &size, GtkWidget *widget)
+QString QGtkPainter::uniqueName(const QString &key, GtkStateType state, GtkShadowType shadow, const QSize &size, GtkWidget *widget)
 {
-    // Note the widget arg should ideally use the widget path, though would compromise performance
-    QString tmp = key
-                  % HexString<uint>(state)
-                  % HexString<uint>(shadow)
-                  % HexString<uint>(size.width())
-                  % HexString<uint>(size.height())
-                  % HexString<quint64>(quint64(widget));
-    return tmp;
+	// Note the widget arg should ideally use the widget path, though would compromise performance
+	QString tmp = key % HexString<uint>(state) % HexString<uint>(shadow) % HexString<uint>(size.width()) % HexString<uint>(size.height()) %
+				  HexString<quint64>(quint64(widget));
+	return tmp;
 }
 
 QT_END_NAMESPACE
 
-#endif //!defined(QT_NO_STYLE_GTK)
+#endif //! defined(QT_NO_STYLE_GTK)

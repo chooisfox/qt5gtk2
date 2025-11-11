@@ -23,13 +23,13 @@
 
 #include <QHash>
 #include <QList>
-#include <QUrl>
 #include <QScopedPointer>
 #include <QString>
+#include <QUrl>
 #include <qpa/qplatformdialoghelper.h>
 
-typedef struct _GtkWidget GtkWidget;
-typedef struct _GtkDialog GtkDialog;
+typedef struct _GtkWidget	  GtkWidget;
+typedef struct _GtkDialog	  GtkDialog;
 typedef struct _GtkFileFilter GtkFileFilter;
 
 QT_BEGIN_NAMESPACE
@@ -39,90 +39,90 @@ class QColor;
 
 class Qt5Gtk2ColorDialogHelper : public QPlatformColorDialogHelper
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    Qt5Gtk2ColorDialogHelper();
-    ~Qt5Gtk2ColorDialogHelper();
+	Qt5Gtk2ColorDialogHelper();
+	~Qt5Gtk2ColorDialogHelper();
 
-    bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
-    void exec() Q_DECL_OVERRIDE;
-    void hide() Q_DECL_OVERRIDE;
+	bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
+	void exec() Q_DECL_OVERRIDE;
+	void hide() Q_DECL_OVERRIDE;
 
-    void setCurrentColor(const QColor &color) Q_DECL_OVERRIDE;
-    QColor currentColor() const Q_DECL_OVERRIDE;
+	void   setCurrentColor(const QColor &color) Q_DECL_OVERRIDE;
+	QColor currentColor() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void onAccepted();
+	void onAccepted();
 
 private:
-    static void onColorChanged(Qt5Gtk2ColorDialogHelper *helper);
-    void applyOptions();
+	static void onColorChanged(Qt5Gtk2ColorDialogHelper *helper);
+	void		applyOptions();
 
-    QScopedPointer<QGtk2Dialog> d;
+	QScopedPointer<QGtk2Dialog> d;
 };
 
 class Qt5Gtk2FileDialogHelper : public QPlatformFileDialogHelper
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    Qt5Gtk2FileDialogHelper();
-    ~Qt5Gtk2FileDialogHelper();
+	Qt5Gtk2FileDialogHelper();
+	~Qt5Gtk2FileDialogHelper();
 
-    bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
-    void exec() Q_DECL_OVERRIDE;
-    void hide() Q_DECL_OVERRIDE;
+	bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
+	void exec() Q_DECL_OVERRIDE;
+	void hide() Q_DECL_OVERRIDE;
 
-    bool defaultNameFilterDisables() const Q_DECL_OVERRIDE;
-    void setDirectory(const QUrl &directory) Q_DECL_OVERRIDE;
-    QUrl directory() const Q_DECL_OVERRIDE;
-    void selectFile(const QUrl &filename) Q_DECL_OVERRIDE;
-    QList<QUrl> selectedFiles() const Q_DECL_OVERRIDE;
-    void setFilter() Q_DECL_OVERRIDE;
-    void selectNameFilter(const QString &filter) Q_DECL_OVERRIDE;
-    QString selectedNameFilter() const Q_DECL_OVERRIDE;
+	bool		defaultNameFilterDisables() const Q_DECL_OVERRIDE;
+	void		setDirectory(const QUrl &directory) Q_DECL_OVERRIDE;
+	QUrl		directory() const Q_DECL_OVERRIDE;
+	void		selectFile(const QUrl &filename) Q_DECL_OVERRIDE;
+	QList<QUrl> selectedFiles() const Q_DECL_OVERRIDE;
+	void		setFilter() Q_DECL_OVERRIDE;
+	void		selectNameFilter(const QString &filter) Q_DECL_OVERRIDE;
+	QString		selectedNameFilter() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void onAccepted();
+	void onAccepted();
 
 private:
-    static void onSelectionChanged(GtkDialog *dialog, Qt5Gtk2FileDialogHelper *helper);
-    static void onCurrentFolderChanged(Qt5Gtk2FileDialogHelper *helper);
-    static void onUpdatePreview(GtkDialog *dialog, Qt5Gtk2FileDialogHelper *helper);
-    void applyOptions();
-    void setNameFilters(const QStringList &filters);
+	static void onSelectionChanged(GtkDialog *dialog, Qt5Gtk2FileDialogHelper *helper);
+	static void onCurrentFolderChanged(Qt5Gtk2FileDialogHelper *helper);
+	static void onUpdatePreview(GtkDialog *dialog, Qt5Gtk2FileDialogHelper *helper);
+	void		applyOptions();
+	void		setNameFilters(const QStringList &filters);
 
-    QUrl _dir;
-    QList<QUrl> _selection;
-    QHash<QString, GtkFileFilter*> _filters;
-    QHash<GtkFileFilter*, QString> _filterNames;
-    QScopedPointer<QGtk2Dialog> d;
-    GtkWidget *previewWidget;
+	QUrl							_dir;
+	QList<QUrl>						_selection;
+	QHash<QString, GtkFileFilter *> _filters;
+	QHash<GtkFileFilter *, QString> _filterNames;
+	QScopedPointer<QGtk2Dialog>		d;
+	GtkWidget					   *previewWidget;
 };
 
 class Qt5Gtk2FontDialogHelper : public QPlatformFontDialogHelper
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    Qt5Gtk2FontDialogHelper();
-    ~Qt5Gtk2FontDialogHelper();
+	Qt5Gtk2FontDialogHelper();
+	~Qt5Gtk2FontDialogHelper();
 
-    bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
-    void exec() Q_DECL_OVERRIDE;
-    void hide() Q_DECL_OVERRIDE;
+	bool show(Qt::WindowFlags flags, Qt::WindowModality modality, QWindow *parent) Q_DECL_OVERRIDE;
+	void exec() Q_DECL_OVERRIDE;
+	void hide() Q_DECL_OVERRIDE;
 
-    void setCurrentFont(const QFont &font) Q_DECL_OVERRIDE;
-    QFont currentFont() const Q_DECL_OVERRIDE;
+	void  setCurrentFont(const QFont &font) Q_DECL_OVERRIDE;
+	QFont currentFont() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void onAccepted();
+	void onAccepted();
 
 private:
-    void applyOptions();
+	void applyOptions();
 
-    QScopedPointer<QGtk2Dialog> d;
+	QScopedPointer<QGtk2Dialog> d;
 };
 
 QT_END_NAMESPACE

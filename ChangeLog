@@ -36,3 +36,6 @@ Version 1.0
 * Moved home page to GitHub
 * Added compatibility with qt6gtk2
 * Removed deprecated code
+
+Version 1.1
+* Ported project to CMake for ease of maintenance

@@ -1,0 +1,7 @@
+file(GLOB TEST_SUBDIRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*")
+foreach(subdir IN LISTS TEST_SUBDIRS)
+    if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${subdir})
+        message(STATUS "Adding test subdirectory: ${subdir}")
+        add_subdirectory(${subdir})
+    endif()
+endforeach()

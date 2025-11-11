@@ -18,12 +18,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QtGlobal>
-#include <QPoint>
-#include <QString>
-#include <QPolygon>
-#include <QStringBuilder>
 #include <QAccessible>
+#include <QPoint>
+#include <QPolygon>
+#include <QString>
+#include <QStringBuilder>
+#include <QtGlobal>
 
 #ifndef QSTYLEHELPER_P_H
 #define QSTYLEHELPER_P_H
@@ -51,22 +51,19 @@ class QWindow;
 
 namespace QStyleHelper
 {
-    QString uniqueName(const QString &key, const QStyleOption *option, const QSize &size);
+QString uniqueName(const QString &key, const QStyleOption *option, const QSize &size);
 #ifndef QT_NO_DIAL
-    qreal angle(const QPointF &p1, const QPointF &p2);
-    QPolygonF calcLines(const QStyleOptionSlider *dial);
-    int calcBigLineSize(int radius);
-    void drawDial(const QStyleOptionSlider *dial, QPainter *painter);
-#endif //QT_NO_DIAL
-    void drawBorderPixmap(const QPixmap &pixmap, QPainter *painter, const QRect &rect,
-                     int left = 0, int top = 0, int right = 0,
-                     int bottom = 0);
+qreal	  angle(const QPointF &p1, const QPointF &p2);
+QPolygonF calcLines(const QStyleOptionSlider *dial);
+int		  calcBigLineSize(int radius);
+void	  drawDial(const QStyleOptionSlider *dial, QPainter *painter);
+#endif // QT_NO_DIAL
+void drawBorderPixmap(const QPixmap &pixmap, QPainter *painter, const QRect &rect, int left = 0, int top = 0, int right = 0, int bottom = 0);
 #ifndef QT_NO_ACCESSIBILITY
-    bool isInstanceOf(QObject *obj, QAccessible::Role role);
-    bool hasAncestor(QObject *obj, QAccessible::Role role);
+bool isInstanceOf(QObject *obj, QAccessible::Role role);
+bool hasAncestor(QObject *obj, QAccessible::Role role);
 #endif
-}
-
+} // namespace QStyleHelper
 
 QT_END_NAMESPACE
 

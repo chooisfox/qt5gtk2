@@ -28,15 +28,15 @@ QT_BEGIN_NAMESPACE
 class Qt5Gtk2Theme : public QGnomeTheme
 {
 public:
-    Qt5Gtk2Theme();
+	Qt5Gtk2Theme();
 
-    virtual QVariant themeHint(ThemeHint hint) const Q_DECL_OVERRIDE;
-    virtual QString gtkFontName() const Q_DECL_OVERRIDE;
+	virtual QVariant themeHint(ThemeHint hint) const Q_DECL_OVERRIDE;
+	virtual QString	 gtkFontName() const Q_DECL_OVERRIDE;
 
-    bool usePlatformNativeDialog(DialogType type) const Q_DECL_OVERRIDE;
-    QPlatformDialogHelper *createPlatformDialogHelper(DialogType type) const Q_DECL_OVERRIDE;
+	bool				   usePlatformNativeDialog(DialogType type) const Q_DECL_OVERRIDE;
+	QPlatformDialogHelper *createPlatformDialogHelper(DialogType type) const Q_DECL_OVERRIDE;
 
-    static const char *name;
+	static const char *name;
 };
 
 QT_END_NAMESPACE

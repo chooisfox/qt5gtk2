@@ -18,28 +18,28 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <qpa/qplatformthemeplugin.h>
 #include "qt5gtk2theme.h"
+
+#include <qpa/qplatformthemeplugin.h>
 
 QT_BEGIN_NAMESPACE
 
 class Qt5Gtk2ThemePlugin : public QPlatformThemePlugin
 {
-   Q_OBJECT
-   Q_PLUGIN_METADATA(IID QPlatformThemeFactoryInterface_iid FILE "qt5gtk2.json")
+	Q_OBJECT
+	Q_PLUGIN_METADATA(IID QPlatformThemeFactoryInterface_iid FILE "qt5gtk2.json")
 
 public:
-    QPlatformTheme *create(const QString &key, const QStringList &params) Q_DECL_OVERRIDE;
+	QPlatformTheme *create(const QString &key, const QStringList &params) Q_DECL_OVERRIDE;
 };
 
 QPlatformTheme *Qt5Gtk2ThemePlugin::create(const QString &key, const QStringList &params)
 {
-    Q_UNUSED(params);
-    if (!key.compare(QLatin1String(Qt5Gtk2Theme::name), Qt::CaseInsensitive) ||
-            !key.compare(QLatin1String("qt6gtk2"), Qt::CaseInsensitive))
-        return new Qt5Gtk2Theme;
+	Q_UNUSED(params);
+	if (!key.compare(QLatin1String(Qt5Gtk2Theme::name), Qt::CaseInsensitive) || !key.compare(QLatin1String("qt6gtk2"), Qt::CaseInsensitive))
+		return new Qt5Gtk2Theme;
 
-    return 0;
+	return 0;
 }
 
 QT_END_NAMESPACE

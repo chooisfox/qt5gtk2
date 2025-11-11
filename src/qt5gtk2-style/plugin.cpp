@@ -18,25 +18,26 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include <QStylePlugin>
 #include "qgtkstyle_p.h"
+
+#include <QStylePlugin>
 
 QT_BEGIN_NAMESPACE
 
 class Qt5Gtk2StylePlugin : public QStylePlugin
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "qt5gtk2.json")
+	Q_OBJECT
+	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "qt5gtk2.json")
 
 public:
-    QStyle *create(const QString &key);
+	QStyle *create(const QString &key);
 };
 
 QStyle *Qt5Gtk2StylePlugin::create(const QString &key)
 {
-    if (key == "qt5gtk2")
-        return new QGtkStyle;
-    return 0;
+	if (key == "qt5gtk2")
+		return new QGtkStyle;
+	return 0;
 }
 
 QT_END_NAMESPACE

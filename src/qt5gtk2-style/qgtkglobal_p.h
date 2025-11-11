@@ -35,33 +35,39 @@
 #include <QtGlobal>
 #if !defined(QT_NO_STYLE_GTK)
 
-#undef signals // Collides with GTK symbols
+// Collides with GTK symbols
+#undef signals
+
+// Disable deprecated warnings for GTK2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #include <gtk/gtk.h>
+#pragma GCC diagnostic pop
 
 typedef unsigned long XID;
 
 #undef GTK_OBJECT_FLAGS
-#define GTK_OBJECT_FLAGS(obj)(((GtkObject*)(obj))->flags)
+#define GTK_OBJECT_FLAGS(obj) (((GtkObject *)(obj))->flags)
 
 #define QLS(x) QLatin1String(x)
 
 QT_BEGIN_NAMESPACE
 
 #if Q_BYTE_ORDER == Q_BIG_ENDIAN
-#   define QT_RED 3
-#   define QT_GREEN 2
-#   define QT_BLUE 1
-#   define QT_ALPHA 0
+#define QT_RED	 3
+#define QT_GREEN 2
+#define QT_BLUE	 1
+#define QT_ALPHA 0
 #else
-#   define QT_RED 0
-#   define QT_GREEN 1
-#   define QT_BLUE 2
-#   define QT_ALPHA 3
+#define QT_RED	 0
+#define QT_GREEN 1
+#define QT_BLUE	 2
+#define QT_ALPHA 3
 #endif
-#   define GTK_RED 2
-#   define GTK_GREEN 1
-#   define GTK_BLUE 0
-#   define GTK_ALPHA 3
+#define GTK_RED	  2
+#define GTK_GREEN 1
+#define GTK_BLUE  0
+#define GTK_ALPHA 3
 
 QT_END_NAMESPACE
 
